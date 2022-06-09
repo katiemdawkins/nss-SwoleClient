@@ -1,0 +1,8 @@
+.sessionSummaryBox{
+    border: 2px black solid;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding:5px;
+}

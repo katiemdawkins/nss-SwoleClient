@@ -1,5 +1,19 @@
-export const getExercises = () => {
-    return fetch("http://localhost:8000/exercises", {
+export const getExercises = (exerciseName, category, bodyPart, clear) => {
+    let url = "http://localhost:8000/exercises?"
+    if (exerciseName) {
+        url+= `name=${exerciseName}&`
+    } 
+    if (category) {
+        url+=`category=${category}&`
+    }
+    if (bodyPart) {
+        url+=`body_part=${bodyPart}&`
+    }
+    if (clear) {
+        url +=``
+    }
+
+    return fetch(url, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

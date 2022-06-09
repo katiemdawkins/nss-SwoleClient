@@ -7,7 +7,10 @@ export const NavBar = () => {
   return (
     <nav>
       <Link to="/">Home</Link>
+      <Link to="/add-session">Add Session</Link>
+      <Link to="/training_log">Training Log</Link>
       <Link to="/exercises">Exercises</Link>
+      <Link to="/my-profile">Profile</Link>
   
       {
         localStorage.getItem("auth_token") !== null ?

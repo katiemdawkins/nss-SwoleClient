@@ -1,34 +1,84 @@
 import React, { useEffect, useState } from "react"
-import { getExercises } from "./ExerciseManager"
+import { getExercises, getBodyParts, getCategories } from "./ExerciseManager"
 import { Link, useHistory } from "react-router-dom"
+import { FilterForm } from "./FilterForm"
+import { Calendar } from "antd"
 
 
 
 
 export const ExerciseList = () => {
-    const[ exercises, setExercises]= useState([])
-    const [ query, setQuery ] = useState("") 
+    const [ exercises, setExercises ]= useState([])
+    const [ categories, setCats ] = useState([])
+    const [ bodyParts, setParts ] = useState([])
 
-    const exerciseState = () => {
-        getExercises()
-        .then((data) => {
-            setExercises(data)
-        })
-    }
+
+    const [ exerciseName, setExerciseName ] = useState("")
+    const [ category, setCategory ] = useState("")
+    const [ bodyPart, setBodyPart ] = useState("")
+    const [ clear, clearState ] = useState("")
+    
 
     useEffect(()=>{
-        exerciseState()
+        getExercises(exerciseName, category, bodyPart, clear)
+            .then(data=>
+                setExercises(data))
+    },[exerciseName, category, bodyPart, clear])
+
+    useEffect(()=>{
+        getCategories()
+        .then(data =>
+            setCats(data))
+
+    },[])
+
+    useEffect(()=>{
+        getBodyParts()
+        .then(data =>
+            setParts(data))
+
     },[])
 
     return(
         <article className="exercises">
             <h2>Exercises</h2>
-            
-                <div className="searchBar">
-                    <label className="searchName">Search</label>
-                    <input className="searchInput"placeholder="Exercise name" onChange={exercise => setQuery(exercise.target.value)}></input>
-                </div>
-            
+            <div className="filterForm">
+                <form>
+                    <div className="exerciseFilters">
+                        <div className="searchBar">
+                            <label className="searchName">Search </label>
+                            <input className="searchInput"placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
+                        </div>
+                        <div>
+                            <label className="searchCategory">Category </label>
+                            <select onChange={e => setCategory(e.target.value)}>
+                                <option value="0">Select...</option>
+                                {
+                                    categories.map(cat => {
+                                        return <option value={cat.id} key={cat.id}>
+                                            {cat.label}
+                                            </option>
+                                    })
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label className="searchCategory">Body Part </label>
+                            <select onChange={e => setBodyPart(e.target.value)}>
+                                <option value="0">Select...</option>
+                                {
+                                    bodyParts.map(part => {
+                                        return <option value={part.id} key={part.id}>
+                                            {part.label}
+                                            </option>
+                                    })
+                                }
+                            </select>
+                        </div>
+                        <button onClick={()=> clearState("")}>Clear Filters</button>
+                    </div>
+                </form>
+            </div>
             {
                 exercises.map(exercise => {
                     return <section key={`exercise--${exercise.id}`}>

@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { ExerciseDetails } from "./exercises/ExerciseDetails"
 import { ExerciseList } from "./exercises/ExerciseList"
+import { TrainingLog } from "./traininglog/TrainingLog"
 
 export const ApplicationViews = () => {
     return <>
@@ -11,6 +12,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path ="/exercises/:exerciseId(\d+)">
                 <ExerciseDetails />
+            </Route>
+            <Route exact path ="/training_log">
+                <TrainingLog />
             </Route>
         </main>
     </>
