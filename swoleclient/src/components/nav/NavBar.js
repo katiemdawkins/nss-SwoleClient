@@ -7,6 +7,8 @@ export const NavBar = () => {
   return (
     <nav>
       <Link to="/">Home</Link>
+      <Link to="/exercises">Exercises</Link>
+  
       {
         localStorage.getItem("auth_token") !== null ?
           <button onClick={() => {
@@ -19,6 +21,7 @@ export const NavBar = () => {
           <>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
+            
           </>
       }
     </nav>
