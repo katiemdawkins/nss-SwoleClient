@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { getExercises, getBodyParts, getCategories } from "./ExerciseManager"
-import { Link, useHistory } from "react-router-dom"
-import { FilterForm } from "./FilterForm"
-import { Calendar } from "antd"
+import { getBodyParts, getCategories, getExercises } from "../exercises/ExerciseManager"
 
 
-
-
-export const ExerciseList = () => {
-    const [ exercises, setExercises ]= useState([])
+export const AddExerciseForm = () => {
+    const [exercises, setExercises] = useState([])
     const [ categories, setCats ] = useState([])
     const [ bodyParts, setParts ] = useState([])
-
 
     const [ exerciseName, setExerciseName ] = useState("")
     const [ category, setCategory ] = useState("")
     const [ bodyPart, setBodyPart ] = useState("")
- 
-    
 
     useEffect(()=>{
         getExercises(exerciseName, category, bodyPart )
@@ -89,7 +81,7 @@ export const ExerciseList = () => {
             {
                 exercises.map(exercise => {
                     return <section key={`exercise--${exercise.id}`}>
-                        <div className="exercise__name"><Link className="exerciseLink" to={`/exercises/${exercise.id}`}>{exercise.name} ({exercise.category.label})</Link></div>
+                        <div className="exercise__name">{exercise.name} ({exercise.category.label})<button>Add Exercise</button></div>
                     </section>
                 })
             }

@@ -1,4 +1,4 @@
-export const getExercises = (exerciseName, category, bodyPart, clear) => {
+export const getExercises = (exerciseName, category, bodyPart) => {
     let url = "http://localhost:8000/exercises?"
     if (exerciseName) {
         url+= `name=${exerciseName}&`
@@ -9,9 +9,7 @@ export const getExercises = (exerciseName, category, bodyPart, clear) => {
     if (bodyPart) {
         url+=`body_part=${bodyPart}&`
     }
-    if (clear) {
-        url +=``
-    }
+
 
     return fetch(url, {
         headers:{

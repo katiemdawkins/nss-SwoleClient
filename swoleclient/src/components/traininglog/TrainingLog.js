@@ -20,14 +20,22 @@ export const TrainingLog = () => {
         {
             sessions.map(session => {
                 return <section key={session.id} className="sessionSummaryBox">
-                    <p>Session Number: {session.id}</p>
-                    <p>Date {session.date}</p>
-                    <p>Rating {session.rating}</p>
+                    <p>Session Summary</p>
+                    <p>Date: {session.date}</p>
+                    <p>Rating: {session.rating}</p>
+                    
+                    {
+                        session.Exercises_in_Session.map(exercise_in_session => {
+                            if(exercise_in_session.set_number === 1){
+                                return <p key={exercise_in_session.exercise.id}>{exercise_in_session.exercise.name}</p>
+                            }
+                        })
+                    }
                     </section>
             })
-      
-      }
-      </>
+    
+        }
+        </>
     )
 
 }
