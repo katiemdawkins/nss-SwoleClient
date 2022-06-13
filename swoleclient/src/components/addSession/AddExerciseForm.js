@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router"
 import { getBodyParts, getCategories, getExercises } from "../exercises/ExerciseManager"
+import { createExerciseInSession } from "./AddSessionManager"
 
 
-export const AddExerciseForm = () => {
+export const AddExerciseForm = ({currentSession}) => {
     const [exercises, setExercises] = useState([])
     const [ categories, setCats ] = useState([])
     const [ bodyParts, setParts ] = useState([])
 
+    const [ currentExerciseInSession, setExInSession ] = useState({
+        exercise: 0,
+        session: currentSession.id,
+        set_number: 0,
+        load: 0,
+        reps: 0
+    })
+
     const [ exerciseName, setExerciseName ] = useState("")
     const [ category, setCategory ] = useState("")
     const [ bodyPart, setBodyPart ] = useState("")
+
+    const history = useHistory()
 
     useEffect(()=>{
         getExercises(exerciseName, category, bodyPart )
@@ -36,6 +48,28 @@ export const AddExerciseForm = () => {
         setExerciseName("")
         setCategory("")
         setBodyPart("")
+    }
+
+    const changeExInSessState = (evt) => {
+        const newExInSess = Object.assign({}, currentExerciseInSession)
+        newExInSess[evt.target.name] = evt.target.value
+        setExInSession(newExInSess)
+    }
+
+    const submitExerciseInSession = (evt) => {
+        evt.preventDefault()
+
+        const newExerciseInSession = {
+            exercise: parseInt(currentExerciseInSession.exercise),
+            session: parseInt(currentSession.id),
+            set_number: 0,
+            load: 0,
+            reps: 0
+        }
+
+        createExerciseInSession(newExerciseInSession)
+        //.then(() => history.push(`/training_log/addSession/${session.id}`))
+
     }
 
     return(
@@ -78,13 +112,22 @@ export const AddExerciseForm = () => {
                     </div>
                 </form>
             </div>
-            {
-                exercises.map(exercise => {
-                    return <section key={`exercise--${exercise.id}`}>
-                        <div className="exercise__name">{exercise.name} ({exercise.category.label})<button>Add Exercise</button></div>
-                    </section>
-                })
-            }
+            <div className="exercise_form">
+                        <select 
+                            name="exercise"
+                            value={currentExerciseInSession.exercise} 
+                            onChange={changeExInSessState}>
+                            <option value="0"> Select an exercise...</option>
+                            {exercises.map(exercise => (
+                                <option key={exercise.id} value={exercise.id}> 
+                                    {exercise.name} ({exercise.category.label})
+                                </option>
+                                ))}
+                        </select>
+            </div>
+            <div>
+                <button onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>
+            </div>
             
         </article>
     )

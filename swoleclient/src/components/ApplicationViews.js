@@ -1,6 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { AddSession } from "./addSession/AddSession"
+import { AddToSession } from "./addSession/AddToSession"
+import { StartSession } from "./addSession/StartSession"
 import { ExerciseDetails } from "./exercises/ExerciseDetails"
 import { ExerciseList } from "./exercises/ExerciseList"
 import { TrainingLog } from "./traininglog/TrainingLog"
@@ -18,7 +19,10 @@ export const ApplicationViews = () => {
                 <TrainingLog />
             </Route>
             <Route exact path ="/training_log/addSession">
-                <AddSession />
+                <StartSession />
+            </Route>
+            <Route exact path ="/training_log/addSession/:sessionId(\d+)">
+                <AddToSession />
             </Route>
         </main>
     </>
