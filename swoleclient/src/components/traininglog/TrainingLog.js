@@ -2,17 +2,28 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getSessions } from "./TrainingLogManager"
 import './TL.css'
+import { deleteSession } from "../addSession/AddSessionManager"
 
 export const TrainingLog = () => {
     const [sessions, setSessions] = useState([])
 
     const {userId} = useParams()
     
-    useEffect(()=>{
+    const sessionState = () => {
         getSessions(userId)
-        .then(data =>
-            setSessions(data))
+        .then(data=> setSessions(data))
+    }
+
+    useEffect(()=>{
+        sessionState()
     },[])
+
+    const onDeleteClick = (sessionId) => {
+        return deleteSession(sessionId)
+        .then(data => {
+            sessionState(data)
+        })
+    }
 
     return(
         <>
@@ -31,6 +42,7 @@ export const TrainingLog = () => {
                             }
                         })
                     }
+                    <button onClick={()=>{onDeleteClick(session.id)}}className="my-Button">Delete Session</button>
                     </section>
             })
     

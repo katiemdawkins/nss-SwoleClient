@@ -4,18 +4,20 @@ import { getBodyParts, getCategories, getExercises } from "../exercises/Exercise
 import { createExerciseInSession } from "./AddSessionManager"
 
 
-export const AddExerciseForm = ({currentSession}) => {
+export const AddExerciseForm = ({currentSession, setShowAddExForm}) => {
     const [exercises, setExercises] = useState([])
     const [ categories, setCats ] = useState([])
     const [ bodyParts, setParts ] = useState([])
 
-    const [ currentExerciseInSession, setExInSession ] = useState({
+    const [ newExerciseInSession, setExInSession ] = useState({
         exercise: 0,
         session: currentSession.id,
         set_number: 0,
         load: 0,
         reps: 0
     })
+
+    //const [exercisesInSession, setExercisesInSession] = useState([])
 
     const [ exerciseName, setExerciseName ] = useState("")
     const [ category, setCategory ] = useState("")
@@ -51,24 +53,24 @@ export const AddExerciseForm = ({currentSession}) => {
     }
 
     const changeExInSessState = (evt) => {
-        const newExInSess = Object.assign({}, currentExerciseInSession)
-        newExInSess[evt.target.name] = evt.target.value
-        setExInSession(newExInSess)
+        const newEx = Object.assign({}, newExerciseInSession)
+        newEx[evt.target.name] = evt.target.value
+        setExInSession(newEx)
     }
 
     const submitExerciseInSession = (evt) => {
         evt.preventDefault()
 
-        const newExerciseInSession = {
-            exercise: parseInt(currentExerciseInSession.exercise),
-            session: parseInt(currentSession.id),
+        const newExerciseInSessionObj = {
+            exercise: parseInt(newExerciseInSession.exercise),
+            session: currentSession.id,
             set_number: 0,
             load: 0,
             reps: 0
         }
 
-        createExerciseInSession(newExerciseInSession)
-        //.then(() => history.push(`/training_log/addSession/${session.id}`))
+        createExerciseInSession(newExerciseInSessionObj)
+        .then(() => setShowAddExForm(false)) 
 
     }
 
@@ -115,7 +117,7 @@ export const AddExerciseForm = ({currentSession}) => {
             <div className="exercise_form">
                         <select 
                             name="exercise"
-                            value={currentExerciseInSession.exercise} 
+                            value={newExerciseInSession.exercise} 
                             onChange={changeExInSessState}>
                             <option value="0"> Select an exercise...</option>
                             {exercises.map(exercise => (

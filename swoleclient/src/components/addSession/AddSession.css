@@ -1,0 +1,24 @@
+.setDetails-form{
+    border: solid black 2px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.addOrCancelButtons{
+    border: solid black 2px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.my-Button{
+    margin: 5px;
+}
+
+.detailsInput{
+    margin:5px;
+}
+
+.alignRight{
+    text-align: right;
+
+}

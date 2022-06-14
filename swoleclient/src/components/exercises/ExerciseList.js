@@ -20,7 +20,7 @@ export const ExerciseList = () => {
     
 
     useEffect(()=>{
-        getExercises(exerciseName, category, bodyPart )
+        getExercises(exerciseName, category, bodyPart)
             .then(data=>
                 setExercises(data))
     },[exerciseName, category, bodyPart])
