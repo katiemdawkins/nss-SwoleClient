@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { AddExerciseForm } from "./AddExerciseForm"
+import { AddExerciseForm } from "./forms/AddExerciseForm"
 import { createSession, getExercisesInSession, getSessionById, getSessions } from "./AddSessionManager"
 import { SessionInProgress } from "./SessionInProgress"
 
 export const AddToSession = () => {
     const [showAddExForm, setShowAddExForm] = useState(false)
     const [ currentSession, setCurrentSession] = useState({})
+    const [ sessionRefresh, setSessionRefresh ] = useState(false)
 
     const { sessionId } = useParams()
     const history = useHistory()
@@ -16,7 +17,7 @@ export const AddToSession = () => {
         .then(data => setCurrentSession(data))
     },[sessionId])
 
-
+/////////ADD delete functionality to cancel button
 
     return(
         <>
@@ -28,7 +29,7 @@ export const AddToSession = () => {
         <div className="addExerciseForm">
             {
                 showAddExForm
-                ? <AddExerciseForm currentSession = {currentSession} setShowAddExForm = {setShowAddExForm}/>
+                ? <AddExerciseForm currentSession = {currentSession} setShowAddExForm = {setShowAddExForm} sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
                 : null
             }
 
@@ -36,7 +37,7 @@ export const AddToSession = () => {
         <div className="sessionInProgress">
                     {
                         currentSession.id
-                        ? <SessionInProgress currentSession = {currentSession} />
+                        ? <SessionInProgress sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh}currentSession = {currentSession} setCurrentSession={setCurrentSession} />
                         : null
                     }
         </div> 

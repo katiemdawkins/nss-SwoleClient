@@ -39,6 +39,16 @@ export const updateSessionToComplete = (session) => {
         body: JSON.stringify(session)
     })
 }
+export const updateSession = (session) => {
+    return fetch(`http://localhost:8000/training_log/${session.id}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(session)
+    })
+}
 
 export const deleteSession = (sessionId) => {
     return fetch(`http://localhost:8000/training_log/${sessionId}`, {

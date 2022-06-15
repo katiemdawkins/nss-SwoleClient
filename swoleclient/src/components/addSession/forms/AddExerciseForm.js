@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import { getBodyParts, getCategories, getExercises } from "../exercises/ExerciseManager"
-import { createExerciseInSession } from "./AddSessionManager"
+import { getBodyParts, getCategories, getExercises } from "../../exercises/ExerciseManager"
+import { createExerciseInSession } from "../AddSessionManager"
 
 
-export const AddExerciseForm = ({currentSession, setShowAddExForm}) => {
+export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefresh, setSessionRefresh}) => {
     const [exercises, setExercises] = useState([])
     const [ categories, setCats ] = useState([])
     const [ bodyParts, setParts ] = useState([])
@@ -70,7 +70,9 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm}) => {
         }
 
         createExerciseInSession(newExerciseInSessionObj)
-        .then(() => setShowAddExForm(false)) 
+        .then(() => {
+            setSessionRefresh(!sessionRefresh)
+            setShowAddExForm(false)}) 
 
     }
 
