@@ -104,3 +104,26 @@ export const updateExerciseInSession = (exerciseInSession) => {
     })
 }
 
+////////TAGS
+
+export const getAllTags = () => {
+    return fetch ("http://localhost:8000/tags", {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(response => response.json())
+}
+
+///ExerciseNote
+export const createExerciseNote = (note) => {
+    return fetch("http://localhost:8000/exercise_notes",{
+        method: "POST",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(note) 
+    })
+}
+

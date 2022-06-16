@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { createExerciseInSession, getExerciseInSessionById, getExercisesInSession, updateExerciseInSession } from "../AddSessionManager"
+import { AddNoteAndTags } from "./AddNote"
 import { EditSetDetails } from "./EditSetDetails"
 
 
@@ -7,6 +8,8 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
     const [exercisesInSession, setExercisesInSession] = useState([])
     const [ showSetForm, setShowSetForm ] = useState(false)
     const [ showEditForm, setShowEditForm ] = useState(false)
+    const [ showNoteForm, setShowNoteForm ] = useState(false)
+    const [exerciseInSession, setExerciseInSession] = useState(false)
 
     const [ newExerciseInSession, setExInSession ] = useState({
         exercise: 0,
@@ -17,6 +20,8 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
     })
     
     //get exercises in session from current session id 
+    //then set state for exercisesInSession
+    //refresh the page so they show up
     useEffect(()=>{
         getExercisesInSession(currentSession.id)
         .then(data => setExercisesInSession(data))
@@ -48,6 +53,9 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
 
     }
 
+//map through exercises in session
+//get the exercise name to print from the first exercise in session with a set 0
+//return exerciseInSession.name with + button next to it
     return(
         <form className="addExercisesAndDetails">
             {
@@ -57,11 +65,24 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                     <p>{exerciseInSession.exercise.name} 
                                         <button 
                                             className="my-Button"
-                                            onClick={()=>{setShowSetForm(!showSetForm)}}
+                                            onClick={()=>{setShowSetForm(exerciseInSession.id)}}
                                         >+</button>
+                                        <button
+                                            className-="my-Button"
+                                            onClick={(evt)=>{
+                                                evt.preventDefault()
+                                                setShowNoteForm(exerciseInSession.id)
+                                                setExerciseInSession(exerciseInSession)
+                                            }}
+                                        >Add Note</button>
                                     </p>
                                     {
-                                        showSetForm
+                                        showNoteForm == exerciseInSession.id
+                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession}/>
+                                        :null
+                                    }
+                                    {
+                                        showSetForm == exerciseInSession.id
                                             ? <div className="setDetails-form">
 
                                                 <div className="detailsInput">
@@ -120,18 +141,22 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                     }
                     else if (exerciseInSession.session.id === currentSession.id && exerciseInSession.set_number != 0){
                         return  <>
-                        <p key={exerciseInSession.id}>Set: {exerciseInSession.set_number} Load: {exerciseInSession.load} Reps: {exerciseInSession.reps} 
-                            <button 
-                            className="my-Button"
-                            id={exerciseInSession.id}
-                            onClick={(evt)=> {
-                                evt.preventDefault()
-                                setShowEditForm(true)
-                            }}
-                            >Edit Details</button>
-                        </p>
+                        <div className="setDetailsList">
+                            <ul>
+                                <li  key={exerciseInSession.id}>Set: {exerciseInSession.set_number} Load: {exerciseInSession.load} Reps: {exerciseInSession.reps} 
+                                    <button 
+                                    className="my-Button"
+                                    id={exerciseInSession.id}
+                                    onClick={(evt)=> {
+                                        evt.preventDefault()
+                                        setShowEditForm(exerciseInSession.id)
+                                    }}
+                                    >Edit Details</button>
+                                </li>
+                            </ul>
+                        </div>
                         {
-                            showEditForm && exerciseInSession.id === exerciseInSession.id
+                            showEditForm == exerciseInSession.id 
                             ? <EditSetDetails newExerciseInSession={exerciseInSession} setExerciseInSession={setExInSession} currentSession={currentSession} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh} showEditForm={showEditForm} setShowEditForm={setShowEditForm}/>
                             : null
                         }

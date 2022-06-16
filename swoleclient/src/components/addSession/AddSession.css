@@ -9,6 +9,11 @@
     padding: 5px;
     margin: 10px;
 }
+.exerciseInSessionList{
+    border: solid black 2px;
+    padding: 5px;
+    margin: 10px;
+}
 
 .my-Button{
     margin: 5px;

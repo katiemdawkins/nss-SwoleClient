@@ -32,15 +32,17 @@ export const AddToSession = () => {
             <button className="my-Button" onClick={()=>history.push(`/training_log/addSession`)}>Cancel Session</button>
         </div>
 
-        <div>
+        <div className="finishSession-btn">
             <FinishSession currentSession={currentSession} />
         </div>
 
-        {
-            showRating
-            ? <p>Session Rating: {currentSession.rating}</p>
-            : null
-        }
+        <div className="showSessionRating">
+            {
+                showRating
+                ? <p>Session Rating: {currentSession.rating}</p>
+                : null
+            }
+        </div>
 
         <div className="addExerciseForm">
             {
@@ -51,11 +53,11 @@ export const AddToSession = () => {
 
         </div> 
 
-        <div>
+        <div className="setDetailsSection">
             <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession}/> 
         </div>
 
-        <div>
+        <div className="ratingForm">
         {
             showRatingForm
                 ? <AddRatingForm currentSession={currentSession} setCurrentSession= {setCurrentSession} setShowRating={setShowRating} setShowRatingForm={setShowRatingForm} />
