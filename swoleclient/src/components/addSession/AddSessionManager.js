@@ -73,8 +73,8 @@ export const getExercisesInSession = (session) => {
     .then(response => response.json())
 }
 
-export const getExerciseInSessionById = (sessionId) => {
-    return fetch(`http://localhost:8000/exercises_in_session/${sessionId}`, {
+export const getExerciseInSessionById = (exerciseInSessionId) => {
+    return fetch(`http://localhost:8000/exercises_in_session/${exerciseInSessionId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -90,6 +90,17 @@ export const createExerciseInSession = (exercise) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(exercise) 
+    })
+}
+
+export const updateExerciseInSession = (exerciseInSession) => {
+    return fetch(`http://localhost:8000/exercises_in_session/${exerciseInSession.id}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(exerciseInSession)
     })
 }
 

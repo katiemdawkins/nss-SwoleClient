@@ -9,6 +9,8 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
     const [ categories, setCats ] = useState([])
     const [ bodyParts, setParts ] = useState([])
 
+    
+
     const [ newExerciseInSession, setExInSession ] = useState({
         exercise: 0,
         session: currentSession.id,
@@ -72,67 +74,71 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
         createExerciseInSession(newExerciseInSessionObj)
         .then(() => {
             setSessionRefresh(!sessionRefresh)
-            setShowAddExForm(false)}) 
+            setShowAddExForm(false)
+        
+        }) 
 
     }
 
     return(
-        <article className="exercises">
+        <article className="addExerciseToSessionForm">
             <h2>Exercises</h2>
-            <div className="filterForm">
-                <form>
-                    <div className="exerciseFilters">
-                        <div className="searchBar">
-                            <label className="searchName">Search </label>
-                            <input className="searchInput"placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
+            <div className="ExerciseToSessionForm">
+                <div className="filterForm">
+                    <form>
+                        <div className="exerciseFilters">
+                            <div className="searchBar">
+                                <label className="searchName">Search </label>
+                                <input className="searchInput"placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
+                            </div>
+                            <div>
+                                <label className="searchCategory">Category </label>
+                                <select onChange={e => setCategory(e.target.value)}>
+                                    <option value="0">Select...</option>
+                                    {
+                                        categories.map(cat => {
+                                            return <option value={cat.id} key={cat.id}>
+                                                {cat.label}
+                                                </option>
+                                        })
+                                    }
+                                </select>
+                            </div>
+                            <div>
+                                <label className="searchCategory">Body Part </label>
+                                <select onChange={e => setBodyPart(e.target.value)}>
+                                    <option value="0">Select...</option>
+                                    {
+                                        bodyParts.map(part => {
+                                            return <option value={part.id} key={part.id}>
+                                                {part.label}
+                                                </option>
+                                        })
+                                    }
+                                </select>
+                            </div>
+                            <button className="my-Button" onClick={(e)=> clearState(e)}>Clear Filters</button>
                         </div>
-                        <div>
-                            <label className="searchCategory">Category </label>
-                            <select onChange={e => setCategory(e.target.value)}>
-                                <option value="0">Select...</option>
-                                {
-                                    categories.map(cat => {
-                                        return <option value={cat.id} key={cat.id}>
-                                            {cat.label}
-                                            </option>
-                                    })
-                                }
+                    </form>
+                </div>
+                <div className="exercise_form">
+                    <label>Select an exercise: </label>
+                            <select 
+                                name="exercise"
+                                value={newExerciseInSession.exercise} 
+                                onChange={changeExInSessState}>
+                                <option value="0"> Select an exercise...</option>
+                                {exercises.map(exercise => (
+                                    <option key={exercise.id} value={exercise.id}> 
+                                        {exercise.name} ({exercise.category.label})
+                                    </option>
+                                    ))}
                             </select>
-                        </div>
-                        <div>
-                            <label className="searchCategory">Body Part </label>
-                            <select onChange={e => setBodyPart(e.target.value)}>
-                                <option value="0">Select...</option>
-                                {
-                                    bodyParts.map(part => {
-                                        return <option value={part.id} key={part.id}>
-                                            {part.label}
-                                            </option>
-                                    })
-                                }
-                            </select>
-                        </div>
-                        <button onClick={(e)=> clearState(e)}>Clear Filters</button>
-                    </div>
-                </form>
+                </div>
+                <div>
+                    <button className="my-Button" onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>
+                </div>
             </div>
-            <div className="exercise_form">
-                        <select 
-                            name="exercise"
-                            value={newExerciseInSession.exercise} 
-                            onChange={changeExInSessState}>
-                            <option value="0"> Select an exercise...</option>
-                            {exercises.map(exercise => (
-                                <option key={exercise.id} value={exercise.id}> 
-                                    {exercise.name} ({exercise.category.label})
-                                </option>
-                                ))}
-                        </select>
-            </div>
-            <div>
-                <button onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>
-            </div>
-            
         </article>
     )
 }

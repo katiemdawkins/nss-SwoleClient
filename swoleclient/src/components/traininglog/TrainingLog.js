@@ -37,7 +37,7 @@ export const TrainingLog = () => {
                     
                     {
                         session.Exercises_in_Session.map(exercise_in_session => {
-                            if(exercise_in_session.set_number === 1){
+                            if(exercise_in_session.set_number === 0){
                                 return <p key={exercise_in_session.exercise.id}>{exercise_in_session.exercise.name}</p>
                             }
                         })
