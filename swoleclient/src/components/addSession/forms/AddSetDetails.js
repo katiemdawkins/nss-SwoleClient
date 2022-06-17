@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { createExerciseInSession, getExerciseInSessionById, getExercisesInSession, updateExerciseInSession } from "../AddSessionManager"
-import { AddNoteAndTags } from "./AddNote"
+import { AddNoteAndTags } from "./AddNoteAndTags"
 import { EditSetDetails } from "./EditSetDetails"
 
 
@@ -60,7 +60,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
         <form className="addExercisesAndDetails">
             {
                 exercisesInSession.map(exerciseInSession => {
-                    if(exerciseInSession.set_number === 0 && exerciseInSession.session.id === currentSession.id){
+                    if(exerciseInSession.set_number === 0 && exerciseInSession.session.id === currentSession.id ){
                         return<div className ="exerciseInSessionList">
                                     <p>{exerciseInSession.exercise.name} 
                                         <button 

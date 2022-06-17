@@ -127,3 +127,55 @@ export const createExerciseNote = (note) => {
     })
 }
 
+export const getAllNotes = () => {
+    return fetch ("http://localhost:8000/exercise_notes", {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(response => response.json())
+}
+
+export const getNoteById = (noteId) => {
+    return fetch(`http://localhost:8000/exercise_notes/${noteId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(res => res.json())
+}
+
+export const getLastNote = () => {
+    return fetch(`http://localhost:8000/exercise_notes/getLastNote`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(res => res.json())
+}
+
+export const updateNote = (note)=> {
+    return fetch(`http://localhost:8000/exercise_notes/${note.id}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(note)
+    })
+}
+
+// Note Tag---might need to adjust this 
+
+// export const createNoteTag = (NoteTag) => {
+//     return fetch(`http://localhost:8000/exercise_notes/${note.id}/addNoteTags`,{
+//         method: "POST",
+//         headers: {
+//             "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(NoteTag) 
+//     })
+// }
+
+

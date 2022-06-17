@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react"
-import { createExerciseNote, getAllTags } from "../AddSessionManager"
+import { createExerciseNote, getAllNotes, getAllTags, getNoteById } from "../AddSessionManager"
 
 
-export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm}) => {
+export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, showTagForm, setShowTagForm}) => {
     const [ tags, setTags] =useState([])
+    
     const [ newExerciseNote, setNewExerciseNote] = useState({
         exercise_in_session: exerciseInSession.id,
         description: ""
     })
 
+
     useEffect(()=> {
         getAllTags()
         .then(data => setTags(data))
     },[])
+
+
 
     const changeNoteState = (evt) =>{
         const newNote = Object.assign({}, newExerciseNote)
@@ -28,7 +32,11 @@ export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm}) => 
             description: newExerciseNote.description,
         }
         createExerciseNote(newNoteObj)
-        .then(()=> setShowNoteForm(!showNoteForm))
+        .then(()=> {
+            setShowNoteForm(!showNoteForm)
+            setShowTagForm(true)
+        })
+        //might need to add get all notes for tag situation
     }
 
 
