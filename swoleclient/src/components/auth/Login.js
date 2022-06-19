@@ -36,22 +36,22 @@ export const Login = () => {
         <button onClick={e => invalidDialog.current.close()}>Close</button>
       </dialog>
       <section>
-        <form onSubmit={handleLogin}>
-          <fieldset>
-            <label htmlFor="inputUsername"> Username</label>
-            <input ref={username} type="username" id="username" placeholder="Username address" required autoFocus />
+        <form className="loginRegister"onSubmit={handleLogin}>
+          <fieldset className="loginRegisterField">
+            <label  htmlFor="inputUsername"> Username  </label>
+            <input className="my-input" ref={username} type="username" id="username" placeholder="Username address" required autoFocus />
           </fieldset>
-          <fieldset>
-            <label htmlFor="inputPassword"> Password </label>
-            <input ref={password} type="password" id="password" placeholder="Password" required />
+          <fieldset className="loginRegisterField">
+            <label htmlFor="inputPassword"> Password  </label>
+            <input className="my-input" ref={password} type="password" id="password" placeholder="Password" required />
           </fieldset>
-          <fieldset>
-            <button type="submit">Sign In</button>
+          <fieldset className="loginRegisterField">
+            <button className= "my-Button" type="submit">Sign In</button>
           </fieldset>
+          <section className="RegisterLink">
+            <Link to="/register" >Not a member yet?</Link>
+          </section>
         </form>
-      </section>
-      <section>
-        <Link to="/register">Not a member yet?</Link>
       </section>
     </main>
   )

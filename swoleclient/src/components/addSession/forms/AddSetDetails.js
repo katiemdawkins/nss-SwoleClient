@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { createExerciseInSession, getExerciseInSessionById, getExercisesInSession, updateExerciseInSession } from "../AddSessionManager"
+import { createExerciseInSession, getAllNotes, getExerciseInSessionById, getExercisesInSession, getNoteByExerciseInSessionId, updateExerciseInSession } from "../AddSessionManager"
 import { AddNoteAndTags } from "./AddNoteAndTags"
 import { EditSetDetails } from "./EditSetDetails"
 
@@ -10,6 +10,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
     const [ showEditForm, setShowEditForm ] = useState(false)
     const [ showNoteForm, setShowNoteForm ] = useState(false)
     const [exerciseInSession, setExerciseInSession] = useState(false)
+    const [ exerciseNote, setExerciseNote ] = useState({})
 
     const [ newExerciseInSession, setExInSession ] = useState({
         exercise: 0,
@@ -28,6 +29,10 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
     },[sessionRefresh]
     )
 
+    // useEffect(()=> {
+    //     getAllNotes()
+    //     .then(data=>setExerciseNotes(data))
+    // },[])
 
     //for new exercise in session object
     const changeExInSessState = (evt) => {
@@ -53,6 +58,8 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
 
     }
 
+    
+
 //map through exercises in session
 //get the exercise name to print from the first exercise in session with a set 0
 //return exerciseInSession.name with + button next to it
@@ -73,14 +80,16 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                                 evt.preventDefault()
                                                 setShowNoteForm(exerciseInSession.id)
                                                 setExerciseInSession(exerciseInSession)
+                                                
                                             }}
                                         >Add Note</button>
                                     </p>
                                     {
                                         showNoteForm == exerciseInSession.id
-                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession}/>
+                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote}/>
                                         :null
                                     }
+
                                     {
                                         showSetForm == exerciseInSession.id
                                             ? <div className="setDetails-form">
@@ -164,6 +173,14 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                         </>
                         }})
                     }
+                    
         </form>
     )
 }
+// {
+//     exerciseNotes.map(note => {
+//         if (note.exercise_in_session.id === exerciseInSession.id){
+//             return <p>{note.description}</p>
+//         }
+//     })
+// }

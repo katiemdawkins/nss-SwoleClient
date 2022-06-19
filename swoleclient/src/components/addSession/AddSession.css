@@ -39,3 +39,31 @@
     padding: 5px;
     margin: 10px;
 }
+
+.mainBitCenter{
+
+    margin: 4em 5em;
+    text-align: center;
+}
+
+.my-dropdown{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    
+}
+.my-dropdown:hover {
+    color: #2E9CCA;
+}
+
+#leftBtn{
+    text-align: left;
+}
+
+#rightBtn{
+    text-align: right; 
+}

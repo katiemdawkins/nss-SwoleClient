@@ -23,15 +23,18 @@ export const StartSession = () => {
     
     return(
         <>
-        <h2>Log Your Sessions</h2>
-            <div className="startSession">
-                <button onClick={(evt)=> {
+        <section className="mainBitCenter">
+            <h2>Log Your Sessions</h2>
+                <div className="startSession">
+                    <button  className="my-Button"onClick={(evt)=> {
 
-                    
-                    setCurrentSession({date:""})
-                    submitSession(evt)
-                }}>Start a New Session</button>
-            </div>
+                        
+                        setCurrentSession({date:""})
+                        submitSession(evt)
+                    }}>Start a New Session</button>
+                </div>
+
+        </section>
         </>
     )
 }

@@ -4,36 +4,11 @@ import { NoteForm } from "./AddNoteForm"
 import { TagForm } from "./AddTagForm"
 
 
-export const AddNoteAndTags = ({exerciseInSession}) => {
+export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote}) => {
     //const [ tags, setTags] =useState([])
     const [ showNoteForm, setShowNoteForm] = useState(true)
     const [ showTagForm, setShowTagForm ] = useState(false)
-    //const [ newNoteTag, setNoteTag] = useState({})
 
-    // useEffect(()=> {
-    //     getAllTags()
-    //     .then(data => setTags(data))
-    // },[])
-
-    // //create function for saving tag check state
-    // const changeNoteTagState = (evt) =>{
-    //     const newTag = Object.assign({}, newNoteTag)
-    //     newTag[evt.target.name] = evt.target.value
-    //     setNoteTag(newTag)
-    // }
-    
-
-    // const submitTags = (evt) => {
-    //     evt.preventDefault()
-        
-    //     const newNoteTagsObj = {
-    //         //note: exerciseInSession.id,
-    //         tag: newNoteTag.id,
-    //     }
-
-        
-
-    // }
 
     return(
         <>
@@ -46,7 +21,7 @@ export const AddNoteAndTags = ({exerciseInSession}) => {
 
             {
                 showTagForm
-                ? <TagForm exerciseInSession={exerciseInSession} showTagForm={showTagForm} setShowTagForm={setShowTagForm} />
+                ? <TagForm exerciseInSession={exerciseInSession} showTagForm={showTagForm} setShowTagForm={setShowTagForm} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote}/>
                 :null
             }
 

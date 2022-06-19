@@ -35,6 +35,7 @@ export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, show
         .then(()=> {
             setShowNoteForm(!showNoteForm)
             setShowTagForm(true)
+            
         })
         //might need to add get all notes for tag situation
     }

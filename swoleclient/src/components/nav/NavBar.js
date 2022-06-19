@@ -5,16 +5,16 @@ import "./NavBar.css"
 export const NavBar = () => {
   const history = useHistory()
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/training_log/addSession">Add Session</Link>
-      <Link to="/training_log">Training Log</Link>
-      <Link to="/exercises">Exercises</Link>
-      <Link to="/my-profile">Profile</Link>
+    <nav className="myNav">
+      
+      <Link className="navLink" to="/training_log/addSession">Add Session</Link>
+      <Link className="navLink" to="/training_log">Training Log</Link>
+      <Link className="navLink" to="/exercises">Exercises</Link>
+      <Link className="navLink" to="/my-profile">Profile</Link>
   
       {
         localStorage.getItem("auth_token") !== null ?
-          <button onClick={() => {
+          <button className="my-Button" onClick={() => {
             localStorage.removeItem("auth_token")
             history.push({ pathname: "/" })
           }}>

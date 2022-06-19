@@ -89,11 +89,11 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
                         <div className="exerciseFilters">
                             <div className="searchBar">
                                 <label className="searchName">Search </label>
-                                <input className="searchInput"placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
+                                <input className="my-input" placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
                             </div>
                             <div>
                                 <label className="searchCategory">Category </label>
-                                <select onChange={e => setCategory(e.target.value)}>
+                                <select className="my-dropdown" onChange={e => setCategory(e.target.value)}>
                                     <option value="0">Select...</option>
                                     {
                                         categories.map(cat => {
@@ -106,7 +106,7 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
                             </div>
                             <div>
                                 <label className="searchCategory">Body Part </label>
-                                <select onChange={e => setBodyPart(e.target.value)}>
+                                <select className="my-dropdown" onChange={e => setBodyPart(e.target.value)}>
                                     <option value="0">Select...</option>
                                     {
                                         bodyParts.map(part => {
@@ -117,13 +117,13 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
                                     }
                                 </select>
                             </div>
-                            <button className="my-Button" onClick={(e)=> clearState(e)}>Clear Filters</button>
                         </div>
                     </form>
                 </div>
                 <div className="exercise_form">
                     <label>Select an exercise: </label>
                             <select 
+                                className="my-dropdown"
                                 name="exercise"
                                 value={newExerciseInSession.exercise} 
                                 onChange={changeExInSessState}>
@@ -135,8 +135,11 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
                                     ))}
                             </select>
                 </div>
-                <div>
-                    <button className="my-Button" onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>
+                <div id="leftBtn">
+                    <button  className="my-Button" onClick={(e)=> clearState(e)}>Clear Filters</button>
+                </div>
+                <div id="rightBtn">   
+                    <button  className="my-Button" onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>
                 </div>
             </div>
         </article>

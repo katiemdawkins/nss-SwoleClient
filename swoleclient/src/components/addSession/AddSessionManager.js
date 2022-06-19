@@ -165,17 +165,15 @@ export const updateNote = (note)=> {
     })
 }
 
-// Note Tag---might need to adjust this 
+//get exercise note by exercise in session id
 
-// export const createNoteTag = (NoteTag) => {
-//     return fetch(`http://localhost:8000/exercise_notes/${note.id}/addNoteTags`,{
-//         method: "POST",
-//         headers: {
-//             "Authorization": `Token ${localStorage.getItem("auth_token")}`,
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(NoteTag) 
-//     })
-// }
+export const getNoteByExerciseInSessionId = (exerciseInSessionId) => {
+    return fetch(`http://localhost:8000/exercise_notes/${exerciseInSessionId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(res => res.json())
+}
 
 
