@@ -82,11 +82,14 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
 
     return(
         <article className="addExerciseToSessionForm">
-            <h2>Exercises</h2>
+            <h2 className="header">Add An Exercise</h2>
             <div className="ExerciseToSessionForm">
                 <div className="filterForm">
-                    <form>
-                        <div className="exerciseFilters">
+                    <form className="exerciseFiltersSession">
+                        <div>
+                            
+                        </div>
+                        <div>
                             <div className="searchBar">
                                 <label className="searchName">Search </label>
                                 <input className="my-input" placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
@@ -135,10 +138,10 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
                                     ))}
                             </select>
                 </div>
-                <div id="leftBtn">
+                <div id="rightBtn">
                     <button  className="my-Button" onClick={(e)=> clearState(e)}>Clear Filters</button>
                 </div>
-                <div id="rightBtn">   
+                <div id="leftBtn">   
                     <button  className="my-Button" onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>
                 </div>
             </div>

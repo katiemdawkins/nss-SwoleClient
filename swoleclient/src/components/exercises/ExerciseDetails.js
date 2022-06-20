@@ -18,17 +18,18 @@ export const ExerciseDetails = () => {
 
     return(
         <article className="exercises">
-            <h2>Exercise Details</h2>
+            <h2 className="header">Exercise Details</h2>
             
-            <div>
+            <div className="exDetails">
                 <h2>{exercise.name}</h2>
-                <ul>
-                    <li>Category:  {exercise.category.label}</li>
-                    <li>Body Part:  {exercise.body_part.label}</li> 
-                    <li>Description:  {exercise.description}</li>
+                <ul className="noDecoration">
+                    <li className="detailsList">Category:  {exercise.category?.label}</li>
+                    <li className="detailsList">Body Part:  {exercise.body_part?.label}</li>
+                    <li className="detailsList">Description:  {exercise.description}</li>
                 </ul>
             </div>
             
         </article>
     )
 }
+

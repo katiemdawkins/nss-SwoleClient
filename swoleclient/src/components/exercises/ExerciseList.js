@@ -3,6 +3,7 @@ import { getExercises, getBodyParts, getCategories } from "./ExerciseManager"
 import { Link, useHistory } from "react-router-dom"
 import { FilterForm } from "./FilterForm"
 import { Calendar } from "antd"
+import './Exercise.css'
 
 
 
@@ -48,17 +49,19 @@ export const ExerciseList = () => {
 
     return(
         <article className="exercises">
-            <h2>Exercises</h2>
+            <h2 className="exerciseListHeader">Exercises</h2>
             <div className="filterForm">
-                <form>
+                <form className="filterFormExerciseList">
                     <div className="exerciseFilters">
                         <div className="searchBar">
                             <label className="searchName">Search </label>
-                            <input className="searchInput"placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
+                            <input className="my-input"placeholder="Exercise name" onChange={e => setExerciseName(e.target.value)}></input>
                         </div>
                         <div>
                             <label className="searchCategory">Category </label>
-                            <select onChange={e => setCategory(e.target.value)}>
+                            <select 
+                                className="my-dropdown"
+                                onChange={e => setCategory(e.target.value)}>
                                 <option value="0">Select...</option>
                                 {
                                     categories.map(cat => {
@@ -71,7 +74,9 @@ export const ExerciseList = () => {
                         </div>
                         <div>
                             <label className="searchCategory">Body Part </label>
-                            <select onChange={e => setBodyPart(e.target.value)}>
+                            <select 
+                                className="my-dropdown"
+                                onChange={e => setBodyPart(e.target.value)}>
                                 <option value="0">Select...</option>
                                 {
                                     bodyParts.map(part => {
@@ -82,13 +87,15 @@ export const ExerciseList = () => {
                                 }
                             </select>
                         </div>
-                        <button onClick={(e)=> clearState(e)}>Clear Filters</button>
+                        <button 
+                            className="my-Button"
+                            onClick={(e)=> clearState(e)}>Clear Filters</button>
                     </div>
                 </form>
             </div>
             {
                 exercises.map(exercise => {
-                    return <section key={`exercise--${exercise.id}`}>
+                    return <section className="exList" key={`exercise--${exercise.id}`}>
                         <div className="exercise__name"><Link className="exerciseLink" to={`/exercises/${exercise.id}`}>{exercise.name} ({exercise.category.label})</Link></div>
                     </section>
                 })

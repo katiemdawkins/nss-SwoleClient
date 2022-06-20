@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import { AddExerciseForm } from "./forms/AddExerciseForm"
-import { getSessionById } from "./AddSessionManager"
+import { deleteSession, getSessionById } from "./AddSessionManager"
 import { FinishSession} from "./FinishSession"
 import { AddRatingForm } from "./forms/AddRating"
 import { AddSetDetails } from "./forms/AddSetDetails"
@@ -25,13 +25,18 @@ export const AddToSession = () => {
 
 /////////ADD delete functionality to cancel button
 
+// const cancelSession= (sessionId)=> {
+//     return deleteSession(sessionId)
+//     .then(()=> history.push(`/training_log/addSession`))
+// }
+
 
 
     return(
         <>
         <div className="addOrCancelButtons">
             <button className="my-Button" onClick={()=>{setShowAddExForm(true)}}>Add Exercise</button>
-            <button className="my-Button" onClick={()=>history.push(`/training_log/addSession`)}>Cancel Session</button>
+            <button className="my-Button" onClick={()=> history.push(`/training_log/addSession`)}>Cancel Session</button>
         </div>
 
         <div className="finishSession-btn">
@@ -67,7 +72,7 @@ export const AddToSession = () => {
         }
         </div>
         <div>
-            <Notes currentSession={currentSession} />
+            <Notes currentSession={currentSession} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
         </div>
 
         </>

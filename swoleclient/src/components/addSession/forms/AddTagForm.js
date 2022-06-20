@@ -3,7 +3,7 @@ import { createExerciseNote, getAllNotes, getAllTags, getLastNote, getNoteByExer
 import { NoteForm } from "./AddNoteForm"
 
 
-export const TagForm = ({ exerciseInSession, showTagForm, setShowTagForm,exerciseNote, setExerciseNote }) => {
+export const TagForm = ({ exerciseInSession, showTagForm, setShowTagForm, exerciseNote, setExerciseNote, sessionRefresh, setSessionRefresh }) => {
     const [ tags, setTags] = useState([])
     
     const [ currentNote, setCurrentNote] = useState({})
@@ -44,8 +44,8 @@ useEffect(()=> {
     }
     
 
-    const submitTags = (evt) => {
-        evt.preventDefault()
+    const submitTags = () => {
+       // evt.preventDefault()
 
     
         const updatedNote = {
@@ -59,8 +59,7 @@ useEffect(()=> {
         .then(()=> {
             setShowTagForm(false)
             getTheNote(exerciseInSession.id)
-            //getExerciseNoteby exerciseInSession id
-            //getNoteByExerciseInSessionId()
+            //setSessionRefresh(true)
         })
 
         
@@ -71,9 +70,9 @@ useEffect(()=> {
         <>
         <form>
             <div>
-                <label htmlFor="tags">Add Note Tags</label>
+                <label htmlFor="tags"><strong>Add Note Tags</strong></label>
             </div>
-            <div>
+            <div className="tagsDisplay">
                 {tags.map(tag => {
                     return <>
                     <input
@@ -83,12 +82,13 @@ useEffect(()=> {
                         className="tagsCheckBox"
                         onChange={handleChange}
                         />
-                        <label key={tag.id}>{tag.label}</label>
+                        <label className="tagList" key={tag.id}>
+                            {tag.label}   </label>
                     
                     </>
                 })}
             </div>
-            <button onClick={submitTags}>AddTags</button>
+            <button className="my-Button"onClick={submitTags}>AddTags</button>
         </form>
 
         </>

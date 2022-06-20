@@ -17,40 +17,44 @@ export const TrainingLog = () => {
     }, [])
     
     const sessionState = () => {
-        getSessions(currentUser)
-        .then(data=> setSessions(data))
+        getSessions(currentUser.id)
+        .then(data=> 
+            setSessions(data))
     }
 
     useEffect(()=>{
-        getSessions()
-        .then(data=> setSessions(data))
+        sessionState()
+        
     },[])
 
     const onDeleteClick = (sessionId) => {
         return deleteSession(sessionId)
-        .then(data => {
+        .then((data) =>{
             sessionState(data)
         })
     }
 
     return(
         <>
-        <h2>Training Log</h2>
+        <h2 className="logHeading">Training Log</h2>
         {
             sessions.map(session => {
-                if(session.user.id === currentUser.id){
+                if(session.user.id === currentUser.id && session.is_complete===true){
                 return <section key={session.id} className="sessionSummaryBox">
-                    <p>Session Summary</p>
-                    <p>Date: {session.date}</p>
-                    <p>Rating: {session.rating}</p>
+                    <h4>Session Summary</h4>
+                    <p><strong>Date: </strong>{session.date}</p>
+                    <p><strong>Rating: </strong>{session.rating}</p>
+                    <p><strong>Exercises...</strong></p>
+                    <ul>
                     
                     {
                         session.Exercises_in_Session.map(exercise_in_session => {
                             if(exercise_in_session.set_number === 0){
-                                return <p key={exercise_in_session.exercise.id}>{exercise_in_session.exercise.name}</p>
+                                return <li className="logExerciseList"key={exercise_in_session.exercise.id}>{exercise_in_session.exercise.name}</li>
                             }
                         })
                     }
+                    </ul>
                     <button onClick={()=>{onDeleteClick(session.id)}}className="my-Button">Delete Session</button>
                     </section>
 

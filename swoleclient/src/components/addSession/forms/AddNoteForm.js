@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { createExerciseNote, getAllNotes, getAllTags, getNoteById } from "../AddSessionManager"
 
 
-export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, showTagForm, setShowTagForm, showNotes, setShowNotes}) => {
+export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, setShowTagForm, setShowNotes, sessionRefresh, setSessionRefresh}) => {
     const [ tags, setTags] =useState([])
     
     const [ newExerciseNote, setNewExerciseNote] = useState({
@@ -47,9 +47,9 @@ export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, show
             <form> 
                 <div>
                     <p htmlFor="description">How did this movement feel today? Add a note, celebration, or reflection.</p>
-                    <textarea onChange={changeNoteState}name="description"></textarea>
+                    <textarea className="my-input"onChange={changeNoteState}name="description"></textarea>
                 </div>
-                <button onClick={submitNote}>Submit Note</button>
+                <button className= "my-Button"onClick={submitNote}>Submit Note</button>
             </form>
 
 

@@ -67,3 +67,17 @@
 #rightBtn{
     text-align: right; 
 }
+
+.ExerciseToSessionForm{
+   
+    padding: 5px;
+    margin: .5em 10em;
+}
+/* .tagList{
+    margin:.5em;
+} */
+
+.tagsDisplay{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

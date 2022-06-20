@@ -75,7 +75,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                             onClick={()=>{setShowSetForm(exerciseInSession.id)}}
                                         >+</button>
                                         <button
-                                            className-="my-Button"
+                                            className="my-Button"
                                             onClick={(evt)=>{
                                                 evt.preventDefault()
                                                 setShowNoteForm(exerciseInSession.id)
@@ -86,7 +86,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                     </p>
                                     {
                                         showNoteForm == exerciseInSession.id
-                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} showNotes={showNotes} setShowNotes={setShowNotes}/>
+                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} showNotes={showNotes} setShowNotes={setShowNotes} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
                                         :null
                                     }
 
@@ -101,7 +101,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                                             name="set_number" 
                                                             type= "number" 
                                                             min="1" 
-                                                            className="setNumberInput" 
+                                                            className="my-input" 
                                                             placeholder=""
                                                             required>
                                                         </input>
@@ -114,7 +114,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                                         name="load" 
                                                         type= "number" 
                                                         min="0"
-                                                        className="loadInput" 
+                                                        className="my-input" 
                                                         placeholder="0"
                                                         required>
                                                     </input>
@@ -127,7 +127,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                                         name="reps"
                                                         type= "number" 
                                                         min="1" 
-                                                        className="RepsInput" 
+                                                        className="my-input" 
                                                         placeholder=""
                                                         required>
                                                     </input>

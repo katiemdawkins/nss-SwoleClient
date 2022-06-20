@@ -1,0 +1,31 @@
+.exerciseFilters{
+    border: solid black 2px;
+    padding:1em;
+    margin: 1em 10em;
+}
+
+.exerciseListHeader{
+    text-align: center;
+}
+
+.exList{
+    margin: .5em 10em;
+}
+
+.exDetails{
+    border: solid #2E9CCA 2px;
+    padding:1em;
+    margin: 1em 10em;
+}
+
+.noDecoration{
+    list-style-type: none;
+}
+
+.detailsList{
+    margin-bottom:1em;
+}
+
+.header{
+    text-align: center;
+}
