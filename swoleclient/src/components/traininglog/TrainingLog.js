@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getSessions } from "./TrainingLogManager"
+import { getCurrentUser, getSessions } from "./TrainingLogManager"
 import './TL.css'
 import { deleteSession } from "../addSession/AddSessionManager"
 
 export const TrainingLog = () => {
     const [sessions, setSessions] = useState([])
 
-    const {userId} = useParams()
+    // use state for current user ({})
+    const [currentUser, setCurrentUser] = useState({})
+
+    //get/set current user state
+    useEffect(()=>{
+        getCurrentUser()
+        .then(data => setCurrentUser(data))
+    }, [])
     
     const sessionState = () => {
-        getSessions(userId)
+        getSessions(currentUser)
         .then(data=> setSessions(data))
     }
 
     useEffect(()=>{
-        sessionState()
+        getSessions()
+        .then(data=> setSessions(data))
     },[])
 
     const onDeleteClick = (sessionId) => {
@@ -30,6 +38,7 @@ export const TrainingLog = () => {
         <h2>Training Log</h2>
         {
             sessions.map(session => {
+                if(session.user.id === currentUser.id){
                 return <section key={session.id} className="sessionSummaryBox">
                     <p>Session Summary</p>
                     <p>Date: {session.date}</p>
@@ -44,6 +53,8 @@ export const TrainingLog = () => {
                     }
                     <button onClick={()=>{onDeleteClick(session.id)}}className="my-Button">Delete Session</button>
                     </section>
+
+                }
             })
     
         }

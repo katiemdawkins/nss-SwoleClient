@@ -127,8 +127,13 @@ export const createExerciseNote = (note) => {
     })
 }
 
-export const getAllNotes = () => {
-    return fetch ("http://localhost:8000/exercise_notes", {
+export const getAllNotes = (exercise_in_session) => {
+    let url = `http://localhost:8000/exercise_notes?`
+
+    if (exercise_in_session){
+        url+= `exercise_in_session=${exercise_in_session}`
+    }
+    return fetch (url, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

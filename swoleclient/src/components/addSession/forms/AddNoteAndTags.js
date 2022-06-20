@@ -4,7 +4,7 @@ import { NoteForm } from "./AddNoteForm"
 import { TagForm } from "./AddTagForm"
 
 
-export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote}) => {
+export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote, showNotes, setShowNotes}) => {
     //const [ tags, setTags] =useState([])
     const [ showNoteForm, setShowNoteForm] = useState(true)
     const [ showTagForm, setShowTagForm ] = useState(false)
@@ -15,7 +15,7 @@ export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote
         <form>
             {
                 showNoteForm
-                ? <NoteForm exerciseInSession={exerciseInSession} showNoteForm={showNoteForm} setShowNoteForm={setShowNoteForm} showTagForm={showTagForm} setShowTagForm={setShowTagForm}/>
+                ? <NoteForm exerciseInSession={exerciseInSession} showNoteForm={showNoteForm} setShowNoteForm={setShowNoteForm} showTagForm={showTagForm} setShowTagForm={setShowTagForm} showNotes={showNotes} setShowNotes={setShowNotes}/>
                 :null
             }
 

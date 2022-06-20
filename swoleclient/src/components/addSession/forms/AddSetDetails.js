@@ -4,7 +4,7 @@ import { AddNoteAndTags } from "./AddNoteAndTags"
 import { EditSetDetails } from "./EditSetDetails"
 
 
-export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession}) => {
+export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession, showNotes, setShowNotes}) => {
     const [exercisesInSession, setExercisesInSession] = useState([])
     const [ showSetForm, setShowSetForm ] = useState(false)
     const [ showEditForm, setShowEditForm ] = useState(false)
@@ -86,7 +86,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                     </p>
                                     {
                                         showNoteForm == exerciseInSession.id
-                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote}/>
+                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} showNotes={showNotes} setShowNotes={setShowNotes}/>
                                         :null
                                     }
 
@@ -146,6 +146,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                             </div>
                                         : null
                                     }
+                                    
                         </div>
                     }
                     else if (exerciseInSession.session.id === currentSession.id && exerciseInSession.set_number != 0){
@@ -177,10 +178,3 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
         </form>
     )
 }
-// {
-//     exerciseNotes.map(note => {
-//         if (note.exercise_in_session.id === exerciseInSession.id){
-//             return <p>{note.description}</p>
-//         }
-//     })
-// }

@@ -5,6 +5,7 @@ import { getSessionById } from "./AddSessionManager"
 import { FinishSession} from "./FinishSession"
 import { AddRatingForm } from "./forms/AddRating"
 import { AddSetDetails } from "./forms/AddSetDetails"
+import { Notes } from "./Notes"
 
 export const AddToSession = () => {
     const [showAddExForm, setShowAddExForm] = useState(false)
@@ -12,6 +13,7 @@ export const AddToSession = () => {
     const [ sessionRefresh, setSessionRefresh ] = useState(false)
     const [ showRating, setShowRating ] = useState(false)
     const [ showRatingForm, setShowRatingForm ]= useState(true)
+    const[ showNotes, setShowNotes ] = useState(false)
 
     const { sessionId } = useParams()
     const history = useHistory()
@@ -54,7 +56,7 @@ export const AddToSession = () => {
         </div> 
 
         <div className="setDetailsSection">
-            <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession}/> 
+            <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession} showNotes={showNotes} setShowNotes={setShowNotes}/> 
         </div>
 
         <div className="ratingForm">
@@ -64,16 +66,12 @@ export const AddToSession = () => {
                 : null
         }
         </div>
-        
+        <div>
+            <Notes currentSession={currentSession} />
+        </div>
 
         </>
     )
 }
 
-{/* <div className="sessionInProgress">
-                    {
-                        currentSession.id
-                        ? <SessionInProgress sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh}currentSession = {currentSession} setCurrentSession={setCurrentSession} />
-                        : null
-                    }
-        </div>  */}
+
