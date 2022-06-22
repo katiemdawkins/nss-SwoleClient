@@ -45,7 +45,7 @@ useEffect(()=> {
     
 
     const submitTags = () => {
-       // evt.preventDefault()
+
 
     
         const updatedNote = {
@@ -59,7 +59,7 @@ useEffect(()=> {
         .then(()=> {
             setShowTagForm(false)
             getTheNote(exerciseInSession.id)
-            //setSessionRefresh(true)
+            
         })
 
         
@@ -69,12 +69,13 @@ useEffect(()=> {
     return(
         <>
         <form>
-            <div>
-                <label htmlFor="tags"><strong>Add Note Tags</strong></label>
+            <div className="bottomSpace">
+                <label  htmlFor="tags"><strong>Add Additional Details</strong></label>
             </div>
             <div className="tagsDisplay">
                 {tags.map(tag => {
                     return <>
+                    <div className="checkboxItem">
                     <input
                         type="checkbox"
                         id="tags"
@@ -84,7 +85,7 @@ useEffect(()=> {
                         />
                         <label className="tagList" key={tag.id}>
                             {tag.label}   </label>
-                    
+                    </div>
                     </>
                 })}
             </div>

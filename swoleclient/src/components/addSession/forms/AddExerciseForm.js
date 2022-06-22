@@ -9,8 +9,6 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
     const [ categories, setCats ] = useState([])
     const [ bodyParts, setParts ] = useState([])
 
-    
-
     const [ newExerciseInSession, setExInSession ] = useState({
         exercise: 0,
         session: currentSession.id,
@@ -19,13 +17,11 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
         reps: 0
     })
 
-    //const [exercisesInSession, setExercisesInSession] = useState([])
-
     const [ exerciseName, setExerciseName ] = useState("")
     const [ category, setCategory ] = useState("")
     const [ bodyPart, setBodyPart ] = useState("")
 
-    const history = useHistory()
+    
 
     useEffect(()=>{
         getExercises(exerciseName, category, bodyPart )
@@ -47,12 +43,6 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
 
     },[])
 
-    const clearState = (e) => {
-        e.preventDefault()
-        setExerciseName("")
-        setCategory("")
-        setBodyPart("")
-    }
 
     const changeExInSessState = (evt) => {
         const newEx = Object.assign({}, newExerciseInSession)
@@ -137,9 +127,6 @@ export const AddExerciseForm = ({currentSession, setShowAddExForm, sessionRefres
                                     </option>
                                     ))}
                             </select>
-                </div>
-                <div id="rightBtn">
-                    <button  className="my-Button" onClick={(e)=> clearState(e)}>Clear Filters</button>
                 </div>
                 <div id="leftBtn">   
                     <button  className="my-Button" onClick={(evt) =>{submitExerciseInSession(evt)}}>Add Exercise</button>

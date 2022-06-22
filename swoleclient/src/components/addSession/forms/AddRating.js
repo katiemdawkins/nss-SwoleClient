@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router"
 import { updateSession } from "../AddSessionManager"
+import '../AddSession.css'
 
 
-export const AddRatingForm = ({currentSession, setCurrentSession, setShowRating, setShowRatingForm}) => {
-
+export const AddRatingForm = ({currentSession, setCurrentSession, setShowRating, setShowRatingForm, setPopupRatingForm}) => {
+    const history = useHistory()
     const changeRating = (evt) => {
         const newRating = Object.assign({}, currentSession)
         newRating[evt.target.name] = evt.target.value
@@ -17,19 +19,20 @@ export const AddRatingForm = ({currentSession, setCurrentSession, setShowRating,
             date: currentSession.date,
             rating: currentSession.rating,
             user:currentSession.user.id,
-            is_complete: currentSession.is_complete
+            is_complete: true
         }
         updateSession(sessionObj)
-        .then(()=> {
-            setShowRating(true)
-            setShowRatingForm(false)})
+        .then(()=> { history.push("/training_log")})
     }
 
     return(
-        <form className="addRatingToSession">
-                    <label className="rating">Rate Your Session:  </label>
+        <div className="popupBoxRating">
+            <form className="addRatingToSession">
+                    <label className="rating">Before you finish, rate your session:  </label>
                     <input 
                         onChange={changeRating}
+                        id="ratingInput"
+                        className="my-input"
                         name="rating" 
                         type="number" 
                         min="1" max="5" 
@@ -39,6 +42,7 @@ export const AddRatingForm = ({currentSession, setCurrentSession, setShowRating,
                     <button className="my-Button" id={currentSession.id} onClick={updateRatingForSession}>Add Rating</button>
                     <p>On a scale of 1-5, 1 = Garbage, 5 = Best Session Ever!</p>
 
-                </form>
+            </form>
+        </div>
     )
 }

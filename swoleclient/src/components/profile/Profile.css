@@ -1,0 +1,9 @@
+.ratingInfo{
+    border: solid black 2px;
+    margin: 1em 8em;
+    padding: .5em;
+}
+
+.centerText{
+    text-align: center;
+}

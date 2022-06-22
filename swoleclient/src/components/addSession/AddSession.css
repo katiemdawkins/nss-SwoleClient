@@ -1,19 +1,17 @@
 .setDetails-form{
-    border: solid black 2px;
+    /* border: solid black 2px; */
     padding: 5px;
-    margin: 10px;
+    margin: 1em 10em;
 }
 
 .addOrCancelButtons{
+    margin: 1em;
+}
+/* .exerciseInSessionList{
     border: solid black 2px;
     padding: 5px;
     margin: 10px;
-}
-.exerciseInSessionList{
-    border: solid black 2px;
-    padding: 5px;
-    margin: 10px;
-}
+} */
 
 .my-Button{
     margin: 5px;
@@ -27,17 +25,29 @@
     text-align: right;
 
 }
-
+/* bigger div */
+.popupBoxRating{
+    background: #2E9CCA;
+    margin: 3em 20em 3em 20em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em; 
+}
+/* smaller div inside */
 .addRatingToSession{
-    border: solid black 2px;
-    padding: 5px;
-    margin: 10px;
+    position: relative;
+    margin: 1em 3em;
+    background: #fff;
+    padding: 20px;
+    overflow: auto;    
 }
 
-.addExerciseToSessionForm{
-    border: solid black 2px;
+.exerciseAndSets{
+
     padding: 5px;
-    margin: 10px;
+    margin: 1em 15em;
 }
 
 .mainBitCenter{
@@ -69,15 +79,58 @@
 }
 
 .ExerciseToSessionForm{
-   
     padding: 5px;
     margin: .5em 10em;
 }
-/* .tagList{
-    margin:.5em;
-} */
+
+
 
 .tagsDisplay{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+.no-Decoration{
+    list-style-type: none;
+    
+}
+
+.my-B{
+    background-color:#2E9CCA;
+    display:inline-block;
+    padding:0.5em 1.75em;
+    border:0.1em solid #FFFFFF;
+    margin:0.3em 0.5em  ;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.my-B:hover{
+    color:#000000;
+    background-color: #ffffff;
+    border:0.1em solid #000000;
+}
+
+.bottomSpace{
+    margin-bottom: 1em;
+}
+
+.tagsDisplay{
+    margin-bottom: 1em;
+}
+
+.notesSection{
+    border-top: solid black 2px;
+    padding: 5px;
+    margin: 1em 8em;
+}
+
+#ratingInput{
+    
 }

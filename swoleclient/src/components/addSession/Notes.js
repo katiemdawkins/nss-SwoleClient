@@ -24,14 +24,26 @@ export const Notes = ({currentSession}) => {
     
     return(
         <>
-        <h3>Notes</h3>
+        <div className="notesSection">
+        <h3>Session Notes</h3>
         {
             sessionNotes.map(sessionNote => {
             if(sessionNote.exercise_in_session.session.id === currentSession.id){
-                return <p>{sessionNote.exercise_in_session.exercise.name}: {sessionNote.description}</p>
+                return <><p><strong>{sessionNote.exercise_in_session.exercise.name}:</strong> {sessionNote.description}</p>
+                
+                {
+                    sessionNote.tags.map(tag=>{
+                        return <>
+                        <ul>
+                            <li className="no-Decoration">{tag.label}</li>
+                        </ul>
+                        </>
+                    })
+                }</>
             }
             })
         }
+        </div>
         </>
     )
 }
