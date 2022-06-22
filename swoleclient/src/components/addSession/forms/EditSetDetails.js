@@ -49,7 +49,7 @@ export const EditSetDetails = ({ newExerciseInSession, setExerciseInSession, cur
                     name="set_number" 
                     type= "number" 
                     min="1" 
-                    className="setNumberInput" 
+                    className="my-input" 
                     defaultValue={newExerciseInSession.set_number}
                     
                     required>
@@ -63,7 +63,7 @@ export const EditSetDetails = ({ newExerciseInSession, setExerciseInSession, cur
                     name="load" 
                     type= "number" 
                     min="0"
-                    className="loadInput" 
+                    className="my-input" 
                     defaultValue={newExerciseInSession.load}
                     required>
                 </input>
@@ -76,7 +76,7 @@ export const EditSetDetails = ({ newExerciseInSession, setExerciseInSession, cur
                     name="reps"
                     type= "number" 
                     min="1" 
-                    className="RepsInput" 
+                    className="my-input" 
                     defaultValue={newExerciseInSession.reps}
                     required>
                 </input>

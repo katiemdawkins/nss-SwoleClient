@@ -40,8 +40,7 @@ export const ExerciseList = () => {
 
     },[])
 
-    const clearState = (e) => {
-        e.preventDefault()
+    const clearState = () => {
         setExerciseName("")
         setCategory("")
         setBodyPart("")
@@ -49,7 +48,7 @@ export const ExerciseList = () => {
 
     return(
         <article className="exercises">
-            <h2 className="exerciseListHeader">Exercises</h2>
+            <h2 className="exerciseListHeader">Check Out the Swole Exercise Library</h2>
             <div className="filterForm">
                 <form className="filterFormExerciseList">
                     <div className="exerciseFilters">
@@ -89,7 +88,7 @@ export const ExerciseList = () => {
                         </div>
                         <button 
                             className="my-Button"
-                            onClick={(e)=> clearState(e)}>Clear Filters</button>
+                            onClick={clearState}>Clear Filters</button>
                     </div>
                 </form>
             </div>

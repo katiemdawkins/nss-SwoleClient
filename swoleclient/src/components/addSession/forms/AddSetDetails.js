@@ -69,7 +69,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                 exercisesInSession.map(exerciseInSession => {
                     if(exerciseInSession.set_number === 0 && exerciseInSession.session.id === currentSession.id ){
                         return<div className ="exerciseInSessionList">
-                                    <p>{exerciseInSession.exercise.name} 
+                                    <p><strong>{exerciseInSession.exercise.name}   </strong> 
                                         <button 
                                             className="my-Button"
                                             onClick={()=>{setShowSetForm(exerciseInSession.id)}}
@@ -153,15 +153,15 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                         return  <>
                         <div className="setDetailsList">
                             <ul>
-                                <li  key={exerciseInSession.id}>Set: {exerciseInSession.set_number} Load: {exerciseInSession.load} Reps: {exerciseInSession.reps} 
+                                <li  className="no-Decoration" key={exerciseInSession.id}>Set: {exerciseInSession.set_number} Load: {exerciseInSession.load} Reps: {exerciseInSession.reps} 
                                     <button 
-                                    className="my-Button"
+                                    className="my-B"
                                     id={exerciseInSession.id}
                                     onClick={(evt)=> {
                                         evt.preventDefault()
                                         setShowEditForm(exerciseInSession.id)
                                     }}
-                                    >Edit Details</button>
+                                    >   Edit Details</button>
                                 </li>
                             </ul>
                         </div>

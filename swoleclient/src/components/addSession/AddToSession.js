@@ -23,14 +23,6 @@ export const AddToSession = () => {
         .then(data => setCurrentSession(data))
     },[sessionId])
 
-/////////ADD delete functionality to cancel button
-
-// const cancelSession= (sessionId)=> {
-//     return deleteSession(sessionId)
-//     .then(()=> history.push(`/training_log/addSession`))
-// }
-
-
 
     return(
         <>
@@ -50,20 +42,20 @@ export const AddToSession = () => {
                 : null
             }
         </div>
+        <div className="exerciseAndSets">
+            <div className="addExerciseForm">
+                {
+                    showAddExForm
+                    ? <AddExerciseForm currentSession = {currentSession} setShowAddExForm = {setShowAddExForm} sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
+                    : null
+                }
 
-        <div className="addExerciseForm">
-            {
-                showAddExForm
-                ? <AddExerciseForm currentSession = {currentSession} setShowAddExForm = {setShowAddExForm} sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
-                : null
-            }
+            </div> 
 
-        </div> 
-
-        <div className="setDetailsSection">
-            <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession} showNotes={showNotes} setShowNotes={setShowNotes}/> 
+            <div className="setDetailsSection">
+                <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession} showNotes={showNotes} setShowNotes={setShowNotes}/> 
+            </div>
         </div>
-
         <div className="ratingForm">
         {
             showRatingForm
