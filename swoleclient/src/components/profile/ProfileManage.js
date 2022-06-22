@@ -33,3 +33,12 @@ export const getCompletedSessions = () => {
     })
     .then(response => response.json())
 }
+
+export const getSessionsForAverageRating = () => {
+    return fetch(`http://localhost:8000/training_log/getSessionsForRatings?is_complete`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(response => response.json())
+}

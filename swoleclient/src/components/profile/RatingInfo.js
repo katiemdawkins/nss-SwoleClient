@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { getCurrentUser } from "../traininglog/TrainingLogManager"
 import "./Profile.css"
-import { getCompletedSessions, getSessionsForRatings } from "./ProfileManage"
+import { getCompletedSessions, getSessionsForAverageRating, getSessionsForRatings } from "./ProfileManage"
 
 
 export const RatingInfo = ({swoleUser}) => {
 
     const [currentUser, setCurrentUser] = useState({})
-    //const [ aveRating, setAveRating] = useState("")
     const [usersCompleteSessions, setUsersSessions] = useState([])
 
     
@@ -18,8 +17,8 @@ export const RatingInfo = ({swoleUser}) => {
 
     //get completed sessions and set is Complete
     useEffect(()=> {
-        getCompletedSessions()
-        .then(data =>setUsersSessions(data))
+        getSessionsForAverageRating()
+        .then(data => setUsersSessions(data))
     },[])
 
 
@@ -29,7 +28,13 @@ export const RatingInfo = ({swoleUser}) => {
 
     <div className="ratingInfo">
         <h3 className="centerText">Here's how you've been feeling about your sessions lately...</h3>
-        <p>Average Session Rating:   </p>
+        {
+            usersCompleteSessions.map((usersCompleteSession, i)=>{
+                if(i===0){
+                    return <p>Average Session Rating: {usersCompleteSession.averageRating} </p>
+                }
+            })
+        }
         <p>Where 1 = Garbage and 5 = Best Session Ever </p>
     </div>
     </>
