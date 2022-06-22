@@ -40,9 +40,6 @@ export const Notes = ({currentSession}) => {
                         </>
                     })
                 }</>
-                
-                
-                    
             }
             })
         }

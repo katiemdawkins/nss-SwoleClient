@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { createExerciseInSession, getSessions, updateSessionToComplete } from "./AddSessionManager"
-import { getExercisesInSession, getSessionById, updateSession } from "./AddSessionManager"
+import { updateSessionToComplete } from "./AddSessionManager"
+
 import "./AddSession.css"
 import { AddRatingForm } from "./forms/AddRating"
-import { AddSetDetails } from "./forms/AddSetDetails"
+
 
 //this includes the Finish Button which will update the Session to complete
-export const FinishSession = ({ currentSession }) => {
-    
+export const FinishSession = ({ currentSession, setCurrentSession }) => {
+    const[ popUpRatingForm, setPopupRatingForm] = useState(false)
+
     const history = useHistory()
 
     const completeSession = (evt) => {
@@ -22,7 +23,8 @@ export const FinishSession = ({ currentSession }) => {
             is_complete: true
         }
         updateSessionToComplete(sessionObj)
-        .then(()=> history.push("/training_log"))
+        .then(setPopupRatingForm(true))
+        
     }
 
     
@@ -32,6 +34,11 @@ export const FinishSession = ({ currentSession }) => {
         <div className="alignRight">
             <button onClick={completeSession}className="my-Button" id="submitSessionBtn">Finish Session</button>
         </div>
+        {
+            popUpRatingForm
+            ? <AddRatingForm currentSession={currentSession} setCurrentSession={setCurrentSession} setPopupRatingForm={setPopupRatingForm}/>
+            :null
+        }
         </>
     )
 }

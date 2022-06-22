@@ -47,7 +47,7 @@ export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, setS
             <form> 
                 <div>
                     <p htmlFor="description">  Notes for this exercise... </p>
-                    <textarea className="my-input"onChange={changeNoteState}name="description"></textarea>
+                    <textarea className="my-input"onChange={changeNoteState}name="description" required></textarea>
                 </div>
                 <button className= "my-Button"onClick={submitNote}>Submit Note</button>
             </form>

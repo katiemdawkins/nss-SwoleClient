@@ -45,7 +45,7 @@ useEffect(()=> {
     
 
     const submitTags = () => {
-       // evt.preventDefault()
+
 
     
         const updatedNote = {
@@ -59,7 +59,7 @@ useEffect(()=> {
         .then(()=> {
             setShowTagForm(false)
             getTheNote(exerciseInSession.id)
-            //setSessionRefresh(true)
+            
         })
 
         
