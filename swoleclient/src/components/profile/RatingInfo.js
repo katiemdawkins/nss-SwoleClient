@@ -6,20 +6,13 @@ import { getCompletedSessions, getSessionsForAverageRating, getSessionsForRating
 
 export const RatingInfo = ({swoleUser}) => {
 
-    const [currentUser, setCurrentUser] = useState({})
     const [usersCompleteSessions, setUsersSessions] = useState([])
 
-    
-    useEffect(()=>{
-        getCurrentUser()
-        .then(data => setCurrentUser(data))
-    }, [])
-
-    //get completed sessions and set is Complete
+    //get completed sessions for current swoleUser
     useEffect(()=> {
-        getSessionsForAverageRating()
+        getSessionsForAverageRating(swoleUser?.id)
         .then(data => setUsersSessions(data))
-    },[])
+    },[swoleUser])
 
 
 

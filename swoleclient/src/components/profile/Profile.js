@@ -13,8 +13,12 @@ export const Profile = () => {
 
     return(
         <>
-        <h1 className="header">Hi {swoleUser.user?.first_name}! </h1>
-        <RatingInfo swoleUser={swoleUser}/>
+            <h1 className="header">Hi {swoleUser.user?.first_name}! </h1>
+        {
+            swoleUser
+            ? <RatingInfo swoleUser={swoleUser}/>
+            : null
+        }
         </>
     )
 }
