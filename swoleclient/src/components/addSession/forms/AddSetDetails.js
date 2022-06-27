@@ -4,7 +4,7 @@ import { AddNoteAndTags } from "./AddNoteAndTags"
 import { EditSetDetails } from "./EditSetDetails"
 
 
-export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession, showNotes, setShowNotes}) => {
+export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession, showNotes, setShowNotes, setRefreshNotes}) => {
     const [exercisesInSession, setExercisesInSession] = useState([])
     const [ showSetForm, setShowSetForm ] = useState(false)
     const [ showEditForm, setShowEditForm ] = useState(false)
@@ -28,11 +28,6 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
         .then(data => setExercisesInSession(data))
     },[sessionRefresh]
     )
-
-    // useEffect(()=> {
-    //     getAllNotes()
-    //     .then(data=>setExerciseNotes(data))
-    // },[])
 
     //for new exercise in session object
     const changeExInSessState = (evt) => {
@@ -86,7 +81,7 @@ export const AddSetDetails = ({sessionRefresh, setSessionRefresh, currentSession
                                     </p>
                                     {
                                         showNoteForm == exerciseInSession.id
-                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} showNotes={showNotes} setShowNotes={setShowNotes} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
+                                        ? <AddNoteAndTags  exerciseInSession={exerciseInSession} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} showNotes={showNotes} setShowNotes={setShowNotes} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh} setRefreshNotes={setRefreshNotes}/>
                                         :null
                                     }
 

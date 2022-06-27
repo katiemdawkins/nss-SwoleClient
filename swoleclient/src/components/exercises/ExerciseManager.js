@@ -44,5 +44,3 @@ export const getCategories = () => {
     })
     .then(response => response.json())
 }
-
-//Stretch goal createExercise

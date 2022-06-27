@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { getExercises, getBodyParts, getCategories } from "./ExerciseManager"
-import { Link, useHistory } from "react-router-dom"
-import { FilterForm } from "./FilterForm"
-import { Calendar } from "antd"
+import { Link } from "react-router-dom"
 import './Exercise.css'
 
 

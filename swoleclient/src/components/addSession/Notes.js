@@ -3,8 +3,6 @@ import { getAllNotes, getExercisesInSession } from "./AddSessionManager"
 
 export const Notes = ({currentSession}) => {
     //get notes that match current user and exercise in session id for this session
-    //get current session
-    //get current user
 
     const [ sessionNotes, setSessionNotes] = useState([])
     const [ exercisesInSession, setExercisesInSession] = useState([])

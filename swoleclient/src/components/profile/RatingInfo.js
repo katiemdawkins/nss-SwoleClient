@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { getCurrentUser } from "../traininglog/TrainingLogManager"
 import "./Profile.css"
-import { getCompletedSessions, getSessionsForAverageRating, getSessionsForRatings } from "./ProfileManage"
+import {  getSessionsForAverageRating} from "./ProfileManage"
 
 
 export const RatingInfo = ({swoleUser}) => {

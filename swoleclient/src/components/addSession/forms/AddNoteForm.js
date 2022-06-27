@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { createExerciseNote, getAllNotes, getAllTags, getNoteById } from "../AddSessionManager"
+import { createExerciseNote, getAllTags } from "../AddSessionManager"
 
 
 export const NoteForm = ({exerciseInSession, showNoteForm, setShowNoteForm, setShowTagForm, setShowNotes, sessionRefresh, setSessionRefresh}) => {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router"
 import { getBodyParts, getCategories, getExercises } from "../../exercises/ExerciseManager"
 import { createExerciseInSession } from "../AddSessionManager"
 

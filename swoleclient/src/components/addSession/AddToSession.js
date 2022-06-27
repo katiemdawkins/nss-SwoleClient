@@ -10,7 +10,8 @@ export const AddToSession = () => {
     const [showAddExForm, setShowAddExForm] = useState(false)
     const [ currentSession, setCurrentSession] = useState({})
     const [ sessionRefresh, setSessionRefresh ] = useState(false)
-    const[ showNotes, setShowNotes ] = useState(false)
+    const [ showNotes, setShowNotes ] = useState(false)
+    const [ refreshNotes, setRefreshNotes ] = useState(false)
 
     const { sessionId } = useParams()
     const history = useHistory()
@@ -44,12 +45,15 @@ export const AddToSession = () => {
             </div> 
 
             <div className="setDetailsSection">
-                <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession} showNotes={showNotes} setShowNotes={setShowNotes}/> 
+                <AddSetDetails sessionRefresh ={sessionRefresh} setSessionRefresh={setSessionRefresh} currentSession={currentSession} showNotes={showNotes} setShowNotes={setShowNotes} setRefreshNotes={setRefreshNotes}/> 
             </div>
         </div>
-        
         <div>
-            <Notes currentSession={currentSession} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
+        {
+            refreshNotes
+            ? <Notes currentSession={currentSession} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh} />
+            : <Notes currentSession={currentSession} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh} />
+        }
         </div>
 
         </>

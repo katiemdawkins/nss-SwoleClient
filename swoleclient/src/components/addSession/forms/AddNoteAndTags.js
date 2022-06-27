@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react"
-import { createExerciseNote, getAllTags } from "../AddSessionManager"
+import React, {  useState } from "react"
 import { NoteForm } from "./AddNoteForm"
 import { TagForm } from "./AddTagForm"
 
 
-export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote, showNotes, setShowNotes, sessionRefresh, setSessionRefresh}) => {
+export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote, showNotes, setShowNotes, sessionRefresh, setSessionRefresh, setRefreshNotes}) => {
     //const [ tags, setTags] =useState([])
     const [ showNoteForm, setShowNoteForm] = useState(true)
     const [ showTagForm, setShowTagForm ] = useState(false)
@@ -21,7 +20,7 @@ export const AddNoteAndTags = ({exerciseInSession, exerciseNote, setExerciseNote
 
             {
                 showTagForm
-                ? <TagForm exerciseInSession={exerciseInSession} showTagForm={showTagForm} setShowTagForm={setShowTagForm} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh}/>
+                ? <TagForm exerciseInSession={exerciseInSession} showTagForm={showTagForm} setShowTagForm={setShowTagForm} exerciseNote={exerciseNote} setExerciseNote={setExerciseNote} sessionRefresh={sessionRefresh} setSessionRefresh={setSessionRefresh} setRefreshNotes={setRefreshNotes}/>
                 :null
             }
 
