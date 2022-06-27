@@ -1,17 +1,16 @@
 .setDetails-form{
-    /* border: solid black 2px; */
     padding: 5px;
     margin: 1em 10em;
 }
 
 .addOrCancelButtons{
-    margin: 1em;
+    margin: 1.5em 15em;
 }
-/* .exerciseInSessionList{
-    border: solid black 2px;
-    padding: 5px;
-    margin: 10px;
-} */
+
+.addExercisesAndDetails{
+    padding: 1em;
+
+}
 
 .my-Button{
     margin: 5px;
@@ -45,13 +44,11 @@
 }
 
 .exerciseAndSets{
-
     padding: 5px;
     margin: 1em 15em;
 }
 
 .mainBitCenter{
-
     margin: 4em 5em;
     text-align: center;
 }
@@ -82,8 +79,6 @@
     padding: 5px;
     margin: .5em 10em;
 }
-
-
 
 .tagsDisplay{
     display: grid;
@@ -131,6 +126,6 @@
     margin: 1em 8em;
 }
 
-#ratingInput{
-    
+.finishSession-btn{
+    margin-right: 10em;
 }

@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
 import { getCurrentUser, getSessions } from "./TrainingLogManager"
 import './TL.css'
 import { deleteSession } from "../addSession/AddSessionManager"
 
 export const TrainingLog = () => {
-    const [sessions, setSessions] = useState([])
-
     // use state for current user ({})
     const [currentUser, setCurrentUser] = useState({})
+    const [sessions, setSessions] = useState([])
 
     //get/set current user state
     useEffect(()=>{
         getCurrentUser()
         .then(data => setCurrentUser(data))
     }, [])
-    
+
+
     const sessionState = () => {
         getSessions(currentUser.id)
         .then(data=> 
@@ -25,7 +24,7 @@ export const TrainingLog = () => {
     useEffect(()=>{
         sessionState()
         
-    },[])
+    },[currentUser])
 
     const onDeleteClick = (sessionId) => {
         return deleteSession(sessionId)
@@ -36,7 +35,7 @@ export const TrainingLog = () => {
 
     return(
         <>
-        <h2 className="logHeading">Training Log</h2>
+        <h2 className="logHeading">Hi {currentUser.user?.first_name}! Here's Your Training Log</h2>
         {
             sessions.map(session => {
                 if(session.user.id === currentUser.id && session.is_complete===true){

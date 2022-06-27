@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { getExerciseInSessionById, updateExerciseInSession } from "../AddSessionManager"
+import { updateExerciseInSession } from "../AddSessionManager"
 
 export const EditSetDetails = ({ newExerciseInSession, setExerciseInSession, currentSession, sessionRefresh, setSessionRefresh, showEditForm, setShowEditForm }) => {
     const [ updatedExerciseInSession, setUpdatedExerciseInSession ] = useState({})
     
     //useEffect for getExerciseInSession
     useEffect(()=>{
-
         setUpdatedExerciseInSession(newExerciseInSession)
     },[])
 

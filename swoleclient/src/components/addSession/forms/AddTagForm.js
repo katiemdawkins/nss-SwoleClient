@@ -3,7 +3,7 @@ import { createExerciseNote, getAllNotes, getAllTags, getLastNote, getNoteByExer
 import { NoteForm } from "./AddNoteForm"
 
 
-export const TagForm = ({ exerciseInSession, showTagForm, setShowTagForm, exerciseNote, setExerciseNote, sessionRefresh, setSessionRefresh }) => {
+export const TagForm = ({ exerciseInSession, showTagForm, setShowTagForm, exerciseNote, setExerciseNote, sessionRefresh, setSessionRefresh, setRefreshNotes }) => {
     const [ tags, setTags] = useState([])
     
     const [ currentNote, setCurrentNote] = useState({})
@@ -59,7 +59,7 @@ useEffect(()=> {
         .then(()=> {
             setShowTagForm(false)
             getTheNote(exerciseInSession.id)
-            
+            setRefreshNotes(true)
         })
 
         
@@ -89,7 +89,7 @@ useEffect(()=> {
                     </>
                 })}
             </div>
-            <button className="my-Button"onClick={submitTags}>AddTags</button>
+            <button className="my-Button"onClick={submitTags}>Submit</button>
         </form>
 
         </>

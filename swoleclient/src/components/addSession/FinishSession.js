@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router"
+import React, { useState } from "react"
 import { updateSessionToComplete } from "./AddSessionManager"
 
 import "./AddSession.css"
@@ -10,7 +9,6 @@ import { AddRatingForm } from "./forms/AddRating"
 export const FinishSession = ({ currentSession, setCurrentSession }) => {
     const[ popUpRatingForm, setPopupRatingForm] = useState(false)
 
-    const history = useHistory()
 
     const completeSession = (evt) => {
         evt.preventDefault()

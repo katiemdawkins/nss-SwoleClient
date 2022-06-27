@@ -1,8 +1,11 @@
-export const getSessions = (user) => {
+export const getSessions = (user, is_complete) => {
     let url= `http://localhost:8000/training_log?`
 
     if(user){
-        url+=`user=${user}`
+        url+=`user=${user}&`
+    }
+    if(is_complete){
+        url+=`user=${is_complete}&`
     }
 
     return fetch( url,{
