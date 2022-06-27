@@ -8,6 +8,6 @@ Users can view their Training Log to see summaries of all their completed workou
 Finally users, can go to their profile to see their average rating of their training sessions.
 
 ## Links
-[ERD]<https://drawsql.app/nss-14/diagrams/swole-server-side-capstone>,
+[ERD](https://drawsql.app/nss-14/diagrams/swole-server-side-capstone),
 (https://docs.google.com/document/d/1YKUjsaIL5ZbNWEgG3QfTPIhdfTLb5P8e_taABwd8WiA/edit?usp=sharing "Capstone Proposal")
 
