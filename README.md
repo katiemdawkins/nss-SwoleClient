@@ -9,5 +9,8 @@ Finally users, can go to their profile to see their average rating of their trai
 
 ## Links
 [ERD](https://drawsql.app/nss-14/diagrams/swole-server-side-capstone),
-(https://docs.google.com/document/d/1YKUjsaIL5ZbNWEgG3QfTPIhdfTLb5P8e_taABwd8WiA/edit?usp=sharing "Capstone Proposal")
+[Capstone Prroposal](https://docs.google.com/document/d/1YKUjsaIL5ZbNWEgG3QfTPIhdfTLb5P8e_taABwd8WiA/edit?usp=sharing)
 
+## Wireframe
+![1](https://user-images.githubusercontent.com/97056303/175989699-c475d024-c533-4b87-b3ea-239f29e38ab7.png)
+![2](https://user-images.githubusercontent.com/97056303/175989739-13e7ece6-132e-4c35-b37b-53a48b268884.png)
