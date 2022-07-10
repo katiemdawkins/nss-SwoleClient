@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { getCurrentUser, getSessions } from "./TrainingLogManager"
+import { getCurrentUser, getSessionById, getSessions } from "./TrainingLogManager"
 import './TL.css'
 import { deleteSession } from "../addSession/AddSessionManager"
+import { useHistory } from "react-router-dom"
 
 export const TrainingLog = () => {
-    // use state for current user ({})
+    
     const [currentUser, setCurrentUser] = useState({})
     const [sessions, setSessions] = useState([])
+    
+    const history = useHistory()
 
     //get/set current user state
     useEffect(()=>{
@@ -33,6 +36,9 @@ export const TrainingLog = () => {
         })
     }
 
+
+
+
     return(
         <>
         <h2 className="logHeading">Hi {currentUser.user?.first_name}! Here's Your Training Log</h2>
@@ -55,12 +61,14 @@ export const TrainingLog = () => {
                     }
                     </ul>
                     <button onClick={()=>{onDeleteClick(session.id)}}className="my-Button">Delete Session</button>
+                    <button onClick={()=> history.push(`/training_log/${session.id}`)}className="my-Button">See Details</button>
                     </section>
 
                 }
             })
-    
+            
         }
+
         </>
     )
 

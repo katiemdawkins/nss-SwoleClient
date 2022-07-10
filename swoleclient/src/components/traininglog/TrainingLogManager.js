@@ -18,7 +18,7 @@ export const getSessions = (user, is_complete) => {
 
 
 export const getSessionById = (sessionId) => {
-    return fetch(`http://localhost:8000/exercises/${sessionId}`,{
+    return fetch(`http://localhost:8000/training_log/${sessionId}/getSessionDetails`,{
         headers: {
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -28,6 +28,15 @@ export const getSessionById = (sessionId) => {
 
 export const getCurrentUser = () => {
     return fetch( `http://localhost:8000/swoleUsers/id`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+    .then(res => res.json())
+}
+
+export const getNoteByExerciseInSessionId = (exerciseInSessionId) => {
+    return fetch(`http://localhost:8000/exercise_notes/${exerciseInSessionId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

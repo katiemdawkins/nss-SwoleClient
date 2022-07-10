@@ -5,6 +5,7 @@ import { StartSession } from "./addSession/StartSession"
 import { ExerciseDetails } from "./exercises/ExerciseDetails"
 import { ExerciseList } from "./exercises/ExerciseList"
 import { Profile } from "./profile/Profile"
+import { SessionDetails } from "./traininglog/SessionDetails"
 import { TrainingLog } from "./traininglog/TrainingLog"
 
 export const ApplicationViews = () => {
@@ -18,6 +19,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path ="/training_log">
                 <TrainingLog />
+            </Route>
+            <Route exact path ="/training_log/:sessionId(\d+)">
+                <SessionDetails />
             </Route>
             <Route exact path ="/">
                 <StartSession />
