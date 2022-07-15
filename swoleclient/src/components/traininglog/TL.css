@@ -17,4 +17,11 @@
 }
 .SessionDetailsPopUp{
     border: 5px #2E9CCA solid;
+    padding: 1em;
+    margin: 1em 8em;
+}
+
+.noteSection{
+    border-top: #2E9CCA 2px solid;
+    margin-top: 2em;
 }

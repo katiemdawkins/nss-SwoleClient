@@ -45,11 +45,12 @@ export const SessionDetails = () => {
                     }
                 })
             }
-            <h4>Notes...</h4>
+            <div className ="noteSection">
+            <h3>Notes...</h3>
             {
                 notes?.map(note =>{
                     return <>
-                    <p><strong>{note.exercise_in_session.exercise?.name} </strong></p>
+                    <p><strong>On your {note.exercise_in_session.exercise?.name}- </strong></p>
                     <p>{note.description}</p>
                     {
                         note.tags.map(tag=>{
@@ -60,6 +61,7 @@ export const SessionDetails = () => {
                     
                 })
             }
+            </div>
     
         <button onClick={()=> history.push(`/training_log`)}className="my-Button">Back to Training Log</button>
         </div>
